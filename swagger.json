@@ -1,0 +1,303 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentação desafio Beeleads",
+    "description": "Documentação da api do desfio Beeleads",
+    "version": "1.0.0",
+    "contact": {
+      "email": "marcos.souza.mob@gmail.com"
+    }
+  },
+  "paths": {
+    "/customer": {
+      "post": {
+        "tags": ["Customer"],
+        "summary": "Cadastro de cliente",
+        "description": "Cadastra um novo cliente na base de dados",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "sexo": {
+                    "type": "string",
+                    "example":"m"
+                  },
+                  "telefone": {
+                    "type": "string",
+                    "format": "ddddddddddd",
+                    "example": "11999999999"
+                  },
+                  "dataNascimento": {
+                    "type": "string",
+                    "format": "dd/mm/aaaa",
+                    "example": "10/10/1990"
+                  }
+                },
+                "example": {
+                  "nome": "John Doe",
+                  "email": "joe@example.com",
+                  "sexo": "m",
+                  "telefone": "11956767678",
+                  "dataNascimento": "10/10/1990"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cliente cadastrado com sucesso."
+          },
+          "401": {
+            "description": "Cliente já cadastrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Customer"],
+        "summary": "Atualiza cliente",
+        "description": "Atualiza o cadastro de um cliente",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "sexo": {
+                    "type": "string",
+                    "example":"m"
+                  },
+                  "telefone": {
+                    "type": "string",
+                    "format": "ddddddddddd",
+                    "example": "11999999999"
+                  },
+                  "dataNascimento": {
+                    "type": "string",
+                    "format": "dd/mm/aaaa",
+                    "example": "10/10/1990"
+                  }
+                },
+                "example": {
+                  "nome": "John Doe",
+                  "email": "joe@example.com",
+                  "sexo": "m",
+                  "telefone": "11956767678",
+                  "dataNascimento": "10/10/1990"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Cliente atualizado com sucesso."
+          },
+          "401": {
+            "description": "Campo não válido"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Customer"],
+        "summary": "Listar Clientes",
+        "description": "Lista todos os clientes ativos da base",
+        "responses": {
+          "200": {
+            "description": "Clientes listados com sucesso,"
+          }
+        }
+      }
+    },
+    "/customer/{id}": {
+      "delete": {
+        "tags": ["Customer"],
+        "summary": "Exclui cliente",
+        "description": "Exclui um cliente da base de dados",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Cliente id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "response": {
+          "200": {
+            "description": "Todo deleted"
+          }
+        }
+      }
+    },
+    "/customer/search": {
+      "post": {
+        "tags": ["Customer"],
+        "summary": "Busca por usuários",
+        "description": "Busca por usuário na base de dados",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string" 
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "sexo": {
+                    "type": "string",
+                    "example":"m"
+                  },
+                  "telefone": {
+                    "type": "string",
+                    "format": "ddddddddddd",
+                    "example": "11999999999"
+                  },
+                  "dataNascimento": {
+                    "type": "string",
+                    "format": "dd/mm/aaaa",
+                    "example": "10/10/1990"
+                  }
+                },
+                "example": {
+                  "nome": "John Doe",
+                  "email": "joe@example.com",
+                  "sexo": "m",
+                  "telefone": "11956767678",
+                  "dataNascimento": "10/10/1990"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cliente(s) encontrado(s) com sucesso."
+          },
+          "401": {
+            "description": "Campo não válido"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create User",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string" 
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "John Doe",
+                  "email": "joe@example.com",
+                  "password": "123456"
+                }
+              }
+            }
+          }
+        },
+        "response": {
+          "201": {
+            "description": "Usuário criado com sucesso."
+          },
+          "401": {
+            "description": "Campo não válido."
+          }
+        }
+      }
+    },
+    "/users/auth": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Autentica um usuário",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Autenticação realizada com sucesso"
+          },
+          "400": {
+            "description": "Email ou password estão incorretos"
+          }
+        }
+      }
+    },
+    "/users/refresh-token": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Atualiza o token",
+        "description": "Atualiza o token de autenticação com o refresh-token",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token atualizado com sucesso"
+          }
+        }
+      }
+    }
+  }
+}
