@@ -4,41 +4,7 @@
 
 <img src="https://i.ibb.co/RSQw82n/Captura-de-Tela-2021-12-06-a-s-23-09-05.png" alt="Api Beeleeds" />
 
-
-## `1. Docker`
-#### 1.1 Instalação
-
-O Docker precisará estar instalado para executar os containers do Node e do MySql.\
-Caso ainda não tenha o Docker em sua máquina, siga as instruções abaixo para fazer a intalação de acordo com seu sistema operacional.
-
-[Windows](https://docs.docker.com/desktop/windows/install)\
-[Linux ( Ubuntu )](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt)\
-[Mac](https://docs.docker.com/desktop/mac/install)
-
-#### 1.2 Docker-compose
-Com o docker instalado e em execução vamos realizar a criação dos containers, para isso devemos rodar o comando:
-
-```
-docker-compose up -d
-```
-
-Para confirmar se os containers estão em execução execute o comando:
-
-```
-docker ps
-```
-
-A saída deverá ser parecida com a imagem abaixo:
-
-<img src="https://i.ibb.co/MgCR3fH/Captura-de-Tela-2021-12-06-a-s-23-47-25.png" alt="docker ps" />
-
-Caso os containers não estejam em execução rodar o comando:
-
-```
-docker-compose start
-```
-
-## `2. Instalando as depêndencias`
+## `1. Instalando as depêndencias`
 
 Para baixar as depêndecias da aplicação rodar o comando:
 
@@ -47,20 +13,17 @@ yarn ou npm install
 ```
 
 
-## `3. Banco de dados`
-#### 3.1 Migrations
-
-Com o docker rodando e os containers em execução agora será necessário executar as migrations para a criação das tabelas, para isso execute o comando:
+## `2. Executando a aplicação`
 
 ```
-yarn typeorm migration:run
+yarn dev
 ```
 
 A partir desse ponto já será possível acessar as rotas da api.\
 Primeiro será necessário criar um usuário, pois as rotas de gerenciamento do cliente precisam ser autenticadas.
 
 
-## `4. Criando um usuário `
+## `3. Criando um usuário `
 
 - Rota: http://localhost:3333/users
 - Método: post
@@ -76,7 +39,7 @@ Primeiro será necessário criar um usuário, pois as rotas de gerenciamento do 
 }
 ```
 
-## `5. Autenticando `
+## `4. Autenticando `
 
 - Rota: http://localhost:3333/users/auth
 - Método: post
@@ -102,7 +65,7 @@ Primeiro será necessário criar um usuário, pois as rotas de gerenciamento do 
   }
 ```
 
-## `6. Refresh token `
+## `5. Refresh token `
 
 *obs1. O token está com tempo de expiração de 15 minutos, um tempo curto justamente para testar a funcionalidade de refresh tolen*
 
@@ -132,7 +95,7 @@ Primeiro será necessário criar um usuário, pois as rotas de gerenciamento do 
   }
 ```
 
-## `7. Cadastrando um cliente `
+## `6. Cadastrando um cliente `
 
 - Rota: http://localhost:3333/customer
 - Método: post

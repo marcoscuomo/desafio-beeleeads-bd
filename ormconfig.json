@@ -1,10 +1,10 @@
 {
   "type": "mysql",
   "port": "3306",
-  "host": "localhost",
-  "username": "root",
-  "password": "beeleads",
-  "database": "beeleads",
+  "host": "67.23.238.8",
+  "username": "marc3541_admin",
+  "password": "@Beeleeds21",
+  "database": "marc3541_beeleeds",
   "migrations":["./src/shared/infra/typeorm/migrations/*.ts"],
   "cli": {
       "migrationsDir": "./src/shared/infra/typeorm/migrations"
